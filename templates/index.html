@@ -1,0 +1,154 @@
+<!-- Navi Mumbai House Price Predication -->
+ 
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="static/css/main.css">
+  <title>Navi Mumbai House Price Predictor ML App</title>
+</head>
+ <body> 
+
+  <div class="container"><!-- div 1 open-->
+    <div class="h1">Navi Mumbai House Price Prediction</div>
+    <div class="h2">Powered By - Suraj Jadhav</div>
+    
+    
+    <div class="content"><!-- div 2 open-->
+      <form action="{{ url_for('predict')}}"method="post">
+        <div class="user-details"> <!-- div 3 open-->
+          <div class="input-box">
+            <span class="details">Bedrooms</span>
+            <input placeholder="Enter Bedroom Numbers" type="number" name="Bedrooms" required="required" step="1" min="1" max="3"/><br>
+          </div>
+
+          <div class="input-box">
+            <span class="details">Property Type</span>
+            <input type="text" placeholder= "Select Property Type" name="TrancationType2" required="required" list="Trancation2"><br>
+            <datalist id="Trancation2">
+              <option value="1">Investor Property</option>
+              <option value="2">Resale</option>
+              <option value="3">New Property</option>
+            </datalist>
+          </div>
+
+          <div class="input-box">
+            <span class="details">Furnishing</span>
+            <input type="text" placeholder="Select Furnishing Type" name="FurnishingType2" required="required" list="Furnishing1"><br>
+            <datalist id="Furnishing1">
+              <option value="1">Unfurnished</option>
+              <option value="2">Semi-Furnished</option>
+              <option value="3">Furnished</option>
+            </datalist>
+          </div>
+
+          <div class="input-box">
+            <span class="details">Property On Floor</span>
+            <input type="number" placeholder="Enter Floor Number" name="sqrt_PropertyOnFloor" required="required" min="0" max="25" step="1" /><br>
+          </div>
+          
+          <div class="input-box">
+            <span class="details">Totals Floors</span>
+            <input  type="number" name="Log_Totals_Floors" required="required" min="0" max="25" step="1" /><br>
+          </div>
+
+          <div class="input-box">
+            <span class="details">Carpet Area</span>
+            <input type="number" placeholder="Enter Carpet Area" name="sqrt_Carpet_Area" required="required" min="200" max="1000" value="200" step="10"/><br>
+          </div>
+           
+
+          
+          <dl>
+            <dt>  
+              <input  id = 'testName0' type = 'checkbox' name = 'check[0]' value = '1' checked/> Lift
+              <input  id='testNameHidden0'  type='hidden' value='0' name='check[0]'/><br>        
+            </dt>
+            
+            <dt>
+              <input id = 'testName1' type = 'checkbox' name = 'check[1]' value = '1' checked/> Cover Parking
+              <input id='testNameHidden1'  type='hidden' value='0' name='check[1]'/><br> 
+            </dt>
+  
+            <dt>
+              <input id = 'testName2' type = 'checkbox' name = 'check[2]' value = '1' checked/> Security
+              <input id='testNameHidden2'  type='hidden' value='0' name='check[2]'/><br> 
+            </dt>
+  
+            <dt>
+              <input id = 'testName3' type = 'checkbox' name = 'check[3]' value = '1' checked/> Gym
+              <input id='testNameHidden3'  type='hidden' value='0' name='check[3]'/><br> 
+            </dt>
+  
+            <dt>
+              <input id = 'testName4' type = 'checkbox' name = 'check[4]' value = '1' checked/> Swiming Pool
+              <input id='testNameHidden4'  type='hidden' value='0' name='check[4]'/><br> 
+            </dt>
+  
+            <dt>
+              <input id = 'testName5' type = 'checkbox' name = 'check[5]' value = '1' checked/> Park
+              <input id='testNameHidden5'  type='hidden' value='0' name='check[5]'/><br> 
+            </dt>
+  
+            <dt>
+              <input id = 'testName6' type = 'checkbox' name = 'check[6]' value = '1' checked/> Club House
+              <input id='testNameHidden6'  type='hidden' value='0' name='check[6]'/><br> 
+            </dt>
+  
+          </dl>
+
+          <div class="input-box">
+            <span class="details">Location</span>
+            <input type="text" placeholder="Select Location" name="Location1" required="required" list="location1names">
+            <datalist id="location1names">
+              <option value="airoli">
+              <option value="belapur">
+              <option value="dronagiri">
+              <option value="ghansoli">
+              <option value="juinagar">
+              <option value="kalamboli">
+              <option value="kamothe">
+              <option value="karanjade">
+              <option value="khanda">
+              <option value="khandeshwar">
+              <option value="kharghar">
+              <option value="koparkhairane">
+              <option value="navade">
+              <option value="nerul">
+              <option value="panvel">
+              <option value="rabale">
+              <option value="roadpali">
+              <option value="sanpada">
+              <option value="seawoods">
+              <option value="taloja">
+              <option value="turbhe">
+              <option value="ulwe">
+              <option value="vashi">
+            </datalist>
+
+          </div>  
+          <div class='input-box'>
+            <button class='button' type="submit" ><strong>Predict House Price</strong></button></a>
+          </div>
+          
+          
+          
+       
+        </div> <!-- div 3 close-->
+      </form> <!-- form close-->    
+    </div>
+       
+   
+
+    
+   <!-- Show predicted output using ML model --> 
+   <div>
+       
+   <h2>{{ prediction_text }}</h2>
+       
+   </div>
+ 
+  </div> <!-- div 1 close -->
+
+</body>
+</html>
